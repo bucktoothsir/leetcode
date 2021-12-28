@@ -1,0 +1,33 @@
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head or not head.next:
+            return head
+        p = head.next
+        new_head = self.reverseList(head.next)
+        p.next = head
+        head.next = None
+        return new_head
+
+if __name__ == '__main__':
+    nums = [1,2,3,4,5]
+    head = ListNode(nums[0])
+    p = head
+    for n in nums[1:]:
+        q = ListNode(n)
+        p.next = q
+        p = p.next
+    s = Solution()
+    head = s.reverseList(head)
+    p = head
+    while p:
+        print(p.val)
+        p = p.next
