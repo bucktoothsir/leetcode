@@ -16,4 +16,3 @@ def mergeTwoLists(self, list1, list2):
     else:
         p2.next = self.mergeTwoLists(p1, p2.next)
         return p2
-        
